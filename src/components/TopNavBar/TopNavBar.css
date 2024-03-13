@@ -1,0 +1,67 @@
+.custom-ant-nav-bar .ant-layout-header {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    z-index: 1;
+    width: 100%;
+    padding: 0 20px 0 15px;
+    box-shadow: 0 0 1px #555555;
+}
+
+.custom-ant-nav-bar .container {
+    display: inline-flex;
+    align-items: center;
+}
+
+.custom-ant-nav-bar .left-ctner {
+    flex-shrink: 0;
+}
+
+    .custom-ant-nav-bar .left-ctner a {
+        font-family: "Lexend", sans-serif;
+        font-weight: 900;
+        font-size: 28px;
+        padding-right: 170px;
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+    }
+
+        .custom-ant-nav-bar .left-ctner a img {
+            height: 30px;
+            margin-bottom: -3px;
+        }
+
+        .custom-ant-nav-bar .left-ctner a:link {
+            text-decoration: none;
+            color: black;
+        }
+
+        .custom-ant-nav-bar .left-ctner a:visited {
+            text-decoration: none;
+            color: black;
+        }
+
+        .custom-ant-nav-bar .left-ctner a:hover {
+            text-decoration: none;
+            color: black;
+        }
+
+        .custom-ant-nav-bar .left-ctner a:active {
+            text-decoration: none;
+            color: black;
+        }
+
+    .custom-ant-nav-bar .left-ctner .fa-tiktok {
+        text-shadow: 1px -1px #ff3353fc, -1px 1px cyan;
+    }
+
+.custom-ant-nav-bar .mid-ctner {
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
+.custom-ant-nav-bar .right-ctner > *:not(:first-child) {
+    margin-left: 20px;
+}
