@@ -1,14 +1,24 @@
 import React from 'react'
-import { ConfigProvider } from 'antd';
+import { ConfigProvider, Layout } from 'antd';
 
-import HomePg from './pages/HomePg/HomePg';
 import { AppTheme } from './AppTheme';
+import TopNavBar from './components/TopNavBar/TopNavBar';
+import SiderBar from './components/SiderBar/SiderBar';
+import RouteMng from './routes/RouteMng';
 
 function App() {
 
     return (
         <ConfigProvider theme={AppTheme}>
-            <HomePg/>
+            <Layout>
+                <TopNavBar />
+                <Layout style={{ marginTop: 64 }}>
+                    <SiderBar />
+                    <div>
+                        <RouteMng />
+                    </div>
+                </Layout>
+            </Layout>
         </ConfigProvider>
     )
 }

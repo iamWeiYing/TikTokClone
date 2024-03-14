@@ -1,0 +1,8 @@
+.custom-ant-sider::-webkit-scrollbar {
+    display: none;
+}
+
+.custom-ant-sider {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}

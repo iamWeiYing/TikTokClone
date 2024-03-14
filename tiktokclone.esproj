@@ -9,7 +9,8 @@
     <PublishAssetsDirectory>$(MSBuildProjectDirectory)\dist</PublishAssetsDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="src\components\Sider\" />
+    <Folder Include="src\components\video\" />
+    <Folder Include="src\firebase\" />
     <Folder Include="src\pages\HomePg\" />
   </ItemGroup>
 </Project>
