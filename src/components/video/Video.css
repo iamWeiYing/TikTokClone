@@ -1,5 +1,7 @@
 .video-player {
     position: relative;
+    height: fit-content;
+    width: fit-content;
 }
 
     .video-player .video {
@@ -8,27 +10,45 @@
     }
 
     .video-player .controls {
+        width: 100%;
         position: absolute;
-        height: 35px;
+        height: 50px;
         bottom: 3px;
         left: 0;
         right: 0;
-        display: flex;
-        padding: 0 10px;
-        justify-content: space-between;
-        align-items: center;
         background-color: rgba(0,0,0,0.5)
     }
 
-    .video-player .play-pause-button {
-        background-color: transparent;
-        border: none;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-        outline: none;
-    }
+        .video-player .controls .control-row {
+            display: flex;
+            padding: 0 10px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .video-player .controls .top {
+            height: 35px;
+            margin: auto 15px;
+        }
+
+        .video-player .controls .bottom {
+            height: 15px;
+            font-size: 10px;
+        }
+
+        .video-player .play-pause-button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            outline: none;
+        }
 
     .video-player .volume-slider {
         width: 100px;
+    }
+
+    .video-player .duration {
+        color: white;
     }
