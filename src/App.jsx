@@ -39,7 +39,7 @@ function App() {
                 <TopNavBar />
                 <Layout style={{ marginTop: 64 }}>
                     <SiderBar />
-                    <div>
+                    <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                         <RouteMng />
                     </div>
                 </Layout>

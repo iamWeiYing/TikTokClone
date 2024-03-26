@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { Avatar, ConfigProvider, Dropdown } from 'antd';
-import { UserOutlined, TagOutlined, TikTokOutlined, VideoCameraOutlined, VideoCameraAddOutlined } from '@ant-design/icons';
+import { UserOutlined, TikTokOutlined, VideoCameraOutlined, VideoCameraAddOutlined } from '@ant-design/icons';
+import { BookmarkOutlined } from '../icon/customIcon';
 
 const items = [
     {
@@ -19,7 +20,7 @@ const items = [
                 Yêu thích
             </a>
         ),
-        icon: <TagOutlined />,
+        icon: <BookmarkOutlined />,
     },
     {
         key: '3',

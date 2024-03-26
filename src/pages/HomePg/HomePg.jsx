@@ -1,25 +1,37 @@
 ﻿import React from 'react';
 
-import Video from '../../components/video/Video';
+import PostHP from '../../components/Post_HomePg/PostHP';
 
 function HomePg() {
     const videos = [
-        'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-        'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
-        'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-        'https://assets.mixkit.co/videos/preview/mixkit-tree-with-yellow-flowers-1173-large.mp4',
+        {
+            videoUrl: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+            videoName: "Big Buck Bunny",
+        },
+        {
+            videoUrl: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+            videoName: "Elephant's Dream",
+        },
+        {
+            videoUrl: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+            videoName: "For Bigger Blazes",
+        },
+        {
+            videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-tree-with-yellow-flowers-1173-large.mp4',
+            videoName: "Tree with Yellow Flowers",
+        },
+        
+        
+        
     ];
     return (
-        <ul>
+        <div>
             {videos?.map((video) =>
-                <li key={videos.indexOf(video)} style={{ margin: '400px auto' }}>
-                    <div style={{ width: 505 }}>
-                        <p>Day la video</p>
-                        <Video videoUrl={video} />
-                    </div>
-                </li>
+                <div key={videos.indexOf(video)} style={{ width: 505, margin: '100px auto 400px' }}>
+                    <PostHP data={video} />
+                </div>
             )}
-        </ul>
+        </div>
     );
 }
 

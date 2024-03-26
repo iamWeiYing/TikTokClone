@@ -1,6 +1,7 @@
 ﻿import React, { useEffect, useState, useRef } from 'react';
 import { Slider, Tooltip } from 'antd';
-import { CaretRightOutlined, PauseOutlined, SoundFilled, MutedFilled } from '@ant-design/icons';
+import { CaretRightOutlined, PauseOutlined } from '@ant-design/icons';
+import { SoundFilled, MutedFilled } from '../icon/customIcon';
 import './Video.css';
 
 const secConvert = (sec) => {
@@ -25,19 +26,20 @@ function Video(props) {
         const checkViewport = () => {
             // Kiểm tra nếu video nằm trong viewport
             const rect = video.getBoundingClientRect();
+            const vidHeight = rect.bottom - rect.top;
+
             const inViewport = (
-                rect.top >= -50 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + 50 &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                rect.top >= (window.innerHeight / 2 || document.documentElement.clientHeight / 2) - vidHeight - 30 &&
+                rect.bottom <= (window.innerHeight / 2 || document.documentElement.clientHeight / 2) + vidHeight + 30
             );
 
             if (inViewport) {
                 setIsPlaying(true);
-                videoRef.current.play();
+                video.play();
+                console.log('Video in viewport: ' + props.videoUrl);
             } else {
                 setIsPlaying(false);
-                videoRef.current.pause();
+                video.pause();
             }
         };
 
@@ -47,6 +49,7 @@ function Video(props) {
 
         // Đăng ký event listener khi mount component
         window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
 
         // Kiểm tra trạng thái khi component được mount
         checkViewport();
@@ -54,6 +57,7 @@ function Video(props) {
         // Hủy đăng ký event listener khi unmount component
         return () => {
             window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('load', handleScroll);
         };
     }, []);
 
@@ -149,7 +153,10 @@ function Video(props) {
                             arrow={false}
                         >
                             <button className="play-pause-button" onClick={toggleMute}>
-                                {muted ? <MutedFilled /> : <SoundFilled />}
+                                {muted ?
+                                    <MutedFilled style={{ fontSize: 20 }} /> :
+                                    <SoundFilled style={{ fontSize: 20 }} />
+                                }
                             </button>
                         </Tooltip>
                     </div>
