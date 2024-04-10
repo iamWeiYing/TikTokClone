@@ -1,7 +1,20 @@
 ﻿import React from 'react';
 import { Avatar, ConfigProvider, Dropdown } from 'antd';
 import { UserOutlined, TikTokOutlined, VideoCameraOutlined, VideoCameraAddOutlined } from '@ant-design/icons';
-import { BookmarkOutlined } from '../icon/customIcon';
+import { BookmarkOutlined, LoginOutlined } from '../icon/customIcon';
+
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase/config';
+
+
+const handleLogout = () => {
+    signOut(auth).then(() => {
+        localStorage.setItem('isLogedIn', false);
+        window.location.reload();
+    }).catch((err) => {
+        console.log(err, 'err')
+    })
+}
 
 const items = [
     {
@@ -49,9 +62,23 @@ const items = [
         ),
         icon: <VideoCameraAddOutlined />,
     },
+    {
+        key: '6',
+        label: (
+            <a onClick={() => {
+                /*localStorage.setItem('isLogedIn', false);
+                window.location.reload();*/
+                handleLogout();
+            }}>
+                Đăng xuất
+            </a>
+        ),
+        icon: <LoginOutlined />,
+    },
 ];
 
-function UserMenu() {
+function UserMenu(props) {
+
     return (
         <ConfigProvider
             theme={{
@@ -70,7 +97,7 @@ function UserMenu() {
                 arrow
             >
                 <Avatar
-                    src={'./src/assets/Avatar.jpg'}
+                    src={props.user.photoURL}
                     size={35}
                 />
             </Dropdown>

@@ -6,8 +6,9 @@ import './TopNavBar.css'
 import SearchBox from './SearchBox';
 import UploadButton from './UploadButton';
 import UserMenu from './UserMenu';
+import LoginButton from '../../pages/LoginPg/LoginButton';
 
-function TopNavBar() {
+function TopNavBar(props) {
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -44,27 +45,36 @@ function TopNavBar() {
                 </div>
                 <div className='container right-ctner'>
                     {windowWidth >= 600 && <UploadButton />}
-                    <Tooltip placement='bottom' title='Tin nhắn'>
-                        <SendOutlined
-                            style={{
-                                fontSize: 22,
-                                strokeWidth: 10,
-                                stroke: "black"
-                            }}
-                            onClick={() => console.log('Tin nhắn')}
-                        />
-                    </Tooltip>
-                    <Tooltip placement='bottom' title='Hộp thư'>
-                        <MailOutlined
-                            style={{
-                                fontSize: 22,
-                                strokeWidth: 10,
-                                stroke: "black"
-                            }}
-                            onClick={() => console.log('Hộp thư')}
-                        />
-                    </Tooltip>
-                    <UserMenu />
+                    {props.user.isAnonymous === false &&
+                        <>
+                            <Tooltip placement='bottom' title='Tin nhắn'>
+                                <SendOutlined
+                                    style={{
+                                        fontSize: 22,
+                                        strokeWidth: 10,
+                                        stroke: "black"
+                                    }}
+                                    onClick={() => console.log('Tin nhắn')}
+                                />
+                            </Tooltip>
+                            <Tooltip placement='bottom' title='Hộp thư'>
+                                <MailOutlined
+                                    style={{
+                                        fontSize: 22,
+                                        strokeWidth: 10,
+                                        stroke: "black"
+                                    }}
+                                    onClick={() => console.log('Hộp thư')}
+                                />
+                            </Tooltip>
+                            <UserMenu user={props.user} />
+                        </>
+                    }
+                    {props.user.isAnonymous !== false &&
+                        <>
+                            <LoginButton />
+                        </>
+                    }
                 </div>
             </Header>
         </div>

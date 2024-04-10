@@ -1,51 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ConfigProvider, Layout } from 'antd';
 
 import { AppTheme } from './AppTheme';
 import TopNavBar from './components/TopNavBar/TopNavBar';
 import SiderBar from './components/SiderBar/SiderBar';
 import RouteMng from './routes/RouteMng';
+import LoginModal from './pages/LoginPg/LoginModal';
 
-/*import { getDatabase, ref, child, get } from "firebase/database";
-import { collection, getDocs } from "firebase/firestore";
-import { database, db } from './firebase/config'*/
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 
 function App() {
-
-    /*const readDB = async () => {
-        await getDocs(collection(db, "Posts"))
-            .then((querySnapshot) => {
-                const newData = querySnapshot.docs
-                    .map((doc) => ({ ...doc.data(), id: doc.id }));
-                console.log(newData);
-            })
-    }
-    readDB();*/
-
-    /*const dbRef = ref(database);
-    get(child(dbRef, `Posts`)).then((response) => {
-        if (response.exists()) {
-            console.log(response.val());
-        } else {
-            console.log("No data available");
+    const [currentUser, setCurrentUser] = useState({});
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            setCurrentUser(user);
         }
-    }).catch((error) => {
-        console.error(error);
-    });*/
+    });
 
     return (
         <ConfigProvider theme={AppTheme}>
             <Layout>
-                <TopNavBar />
+                <TopNavBar user={currentUser} />
                 <Layout style={{ marginTop: 64 }}>
-                    <SiderBar />
+                    <SiderBar user={currentUser} />
                     <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                         <RouteMng />
                     </div>
                 </Layout>
+                <LoginModal/>
             </Layout>
         </ConfigProvider>
     )
 }
 
-export default App
+export default App;

@@ -10,9 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="src\components\icon\" />
-    <Folder Include="src\components\Post_HomePg\" />
-    <Folder Include="src\components\video\" />
-    <Folder Include="src\firebase\" />
+    <Folder Include="src\components\Post_HomePg\video\" />
     <Folder Include="src\pages\HomePg\" />
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 ﻿import React, { useEffect, useState, useRef } from 'react';
 import { Slider, Tooltip } from 'antd';
 import { CaretRightOutlined, PauseOutlined } from '@ant-design/icons';
-import { SoundFilled, MutedFilled } from '../icon/customIcon';
+import { SoundFilled, MutedFilled } from '../../icon/customIcon';
 import './Video.css';
 
 const secConvert = (sec) => {
@@ -29,14 +29,13 @@ function Video(props) {
             const vidHeight = rect.bottom - rect.top;
 
             const inViewport = (
-                rect.top >= (window.innerHeight / 2 || document.documentElement.clientHeight / 2) - vidHeight - 30 &&
+                rect.top >= (window.innerHeight / 2 || document.documentElement.clientHeight / 2) - vidHeight - 90 &&
                 rect.bottom <= (window.innerHeight / 2 || document.documentElement.clientHeight / 2) + vidHeight + 30
             );
 
             if (inViewport) {
                 setIsPlaying(true);
                 video.play();
-                console.log('Video in viewport: ' + props.videoUrl);
             } else {
                 setIsPlaying(false);
                 video.pause();
@@ -49,7 +48,7 @@ function Video(props) {
 
         // Đăng ký event listener khi mount component
         window.addEventListener('scroll', handleScroll);
-        window.addEventListener('load', handleScroll);
+        window.addEventListener('loadedmetadata', handleScroll);
 
         // Kiểm tra trạng thái khi component được mount
         checkViewport();
@@ -57,9 +56,9 @@ function Video(props) {
         // Hủy đăng ký event listener khi unmount component
         return () => {
             window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('load', handleScroll);
+            window.removeEventListener('loadedmetadata', handleScroll);
         };
-    }, []);
+    }, [props]);
 
     useEffect(() => {
         const video = videoRef.current;
@@ -123,6 +122,10 @@ function Video(props) {
                 <source
                     src={props.videoUrl}
                     type="video/mp4"
+                />
+                <source
+                    src={props.videoUrl}
+                    type="video/ogg"
                 />
                 Your browser does not support the video tag.
             </video>

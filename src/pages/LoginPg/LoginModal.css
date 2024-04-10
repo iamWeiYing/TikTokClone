@@ -1,0 +1,30 @@
+.loginModal {
+}
+
+    .loginModal .ant-modal-content {
+        text-align: center;
+        height: 642px;
+        width: 485px;
+    }
+
+    .loginModal .ant-modal-title {
+        margin: 44px 0 16px;
+        font-family: "Roboto", sans-serif;
+        font-size: 33px;
+        font-weight: 800;
+    }
+
+    .loginModal .ant-modal-body {
+        height: 490px;
+    }
+
+        .loginModal .ant-modal-body .footer {
+            position: absolute;
+            bottom: 28px;
+            left: 72px;
+            right: 72px;
+        }
+
+            .loginModal .ant-modal-body .footer a,a:link, a:hover, a:visited, a:active {
+                color: #FE2C55;
+            }

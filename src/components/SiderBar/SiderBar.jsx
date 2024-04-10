@@ -5,7 +5,7 @@ import './SiderBar.css'
 
 const { Sider } = Layout;
 
-function SiderBar() {
+function SiderBar(props) {
     const [collapsed, setCollapsed] = useState(false);
 
     useEffect(() => {
@@ -70,11 +70,11 @@ function SiderBar() {
         {
             key: 6,
             label: (
-                <a>
+                <a onClick={() => console.log(props.user)}>
                     Hồ sơ
                 </a>
             ),
-            icon: <Avatar src={'./src/assets/Avatar.jpg'} size={collapsed ? 26 :20} />
+            icon: <Avatar src={props.user.photoURL} size={collapsed ? 26 :20} />
         }
     ];
 
